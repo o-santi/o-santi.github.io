@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on aforismos devaneicos</title>
+    <title>Posts on santi</title>
     <link>o-santi.github.io/posts/</link>
-    <description>Recent content in Posts on aforismos devaneicos</description>
+    <description>Recent content in Posts on santi</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>pt-br</language>
+    <language>pt</language>
     <lastBuildDate>Fri, 19 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="o-santi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>este é o post mais bosta que ja existiu</title>

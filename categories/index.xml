@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on aforismos devaneicos</title>
+    <title>Categories on santi</title>
     <link>o-santi.github.io/categories/</link>
-    <description>Recent content in Categories on aforismos devaneicos</description>
+    <description>Recent content in Categories on santi</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>pt-br</language><atom:link href="o-santi.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>pt</language><atom:link href="o-santi.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
