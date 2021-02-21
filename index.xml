@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>santi</title>
-    <link>o-santi.github.io/</link>
-    <description>Recent content on santi</description>
+    <title>blog da dominação mundial</title>
+    <link>https://o-santi.github.io/</link>
+    <description>Recent content on blog da dominação mundial</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>pt</language>
-    <lastBuildDate>Fri, 19 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="o-santi.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>este é o post mais bosta que ja existiu</title>
-      <link>o-santi.github.io/posts/first_post/</link>
-      <pubDate>Fri, 19 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>o-santi.github.io/posts/first_post/</guid>
-      <description>sei la velho</description>
-    </item>
-    
+    <language>pt-br</language>
+    <copyright>© {year}</copyright><atom:link href="https://o-santi.github.io/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
