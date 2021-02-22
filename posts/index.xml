@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on santi</title>
-    <link>o-santi.github.io/posts/</link>
-    <description>Recent content in Posts on santi</description>
+    <title>Posts on blog da dominação mundial</title>
+    <link>https://o-santi.github.io/posts/</link>
+    <description>Recent content in Posts on blog da dominação mundial</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>pt</language>
-    <lastBuildDate>Fri, 19 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="o-santi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <language>pt-br</language>
+    <copyright>© {year}</copyright>
+    <lastBuildDate>Mon, 22 Feb 2021 00:09:33 -0300</lastBuildDate><atom:link href="https://o-santi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>este é o post mais bosta que ja existiu</title>
-      <link>o-santi.github.io/posts/first_post/</link>
-      <pubDate>Fri, 19 Feb 2021 00:00:00 +0000</pubDate>
+      <title>decepções básicas</title>
+      <link>https://o-santi.github.io/posts/decepcoes-basicas/</link>
+      <pubDate>Mon, 22 Feb 2021 00:09:33 -0300</pubDate>
       
-      <guid>o-santi.github.io/posts/first_post/</guid>
-      <description>sei la velho</description>
+      <guid>https://o-santi.github.io/posts/decepcoes-basicas/</guid>
+      <description>tristezas e mais tristezas ah! que belo o mundo seria se
+\[ 77 + 33 = 100\]
+mas infelizmente não é o que acontece. vivemos num mundo falho e imperfeito, a vida é arbitrária e sem sentido, não há motivo para sequer procurar estender nossa estadia aqui, tudo é fútil e inóquo e devemos todos cometer suicídio.
+ou será que não acontece?
+bases numéricas são um assunto extremamente arbitrário: na maior parte do tempo usamos bases decimais, mas inconscientemente utilizamos outras bases em outros contextos, seja para o tempo (já reparou como 0.</description>
     </item>
     
   </channel>
