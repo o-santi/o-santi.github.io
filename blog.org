@@ -1,0 +1,46 @@
+#+title: lowest case
+#+author: santi
+#+hugo_base_dir: .
+#+hugo_auto_set_lastmod: t
+
+* lowest case
+:PROPERTIES:
+:EXPORT_HUGO_SECTION: /
+:EXPORT_FILE_NAME: index
+:END:
+
+a lower case only blog, purely for aesthetics.
+
+here I talk about discrete mathematics (mostly computer science), including compilers, language theory, type theory, computability theory, software correctness, formal verification, and any other (entirely theoretical almost non-applicable) nerd topic you can think of.
+
+
+* about
+:PROPERTIES:
+:EXPORT_HUGO_SECTION: /about
+:EXPORT_FILE_NAME: index
+:END:
+
+i'm leonardo santiago, a software engineer based in brazil. my interests are in compiler design, programming tools (emacs) and functional programming, usually dabbliing in related topics too. i'm most confortable in nix and rust, but i know a fair share of other languages.
+
+currently, software engineer @ [[https://mixrank.com][Mixrank]].
+
+this blog was built using [[https://github.com/gohugoio/hugo][hugo]], and it's source code is openly available here:
+@@hugo:{{< github repo="o-santi/nixos" >}}@@
+
+you can find me at: @@hugo:[{{< icon "email" >}}](mailto:leonardo.ribeiro.santiago@gmail.com)@@ @@hugo:[{{< icon "linkedin" >}}](https://www.linkedin.com/in/leonardo-ribeiro-santiago/)@@ @@hugo:[{{< icon "github" >}}](https://github.com/o-santi)@@ @@hugo:[{{< icon "telegram" >}}](https://t.me/osanti4)@@ @@hugo:[{{< icon "twitter" >}}](https://twitter.com/o_santi_)@@ 
+
+* blog
+:PROPERTIES:
+:EXPORT_HUGO_SECTION: /posts
+:END:
+** rust is not about memory safety                                :coq:rust:
+:PROPERTIES:
+:EXPORT_FILE_NAME: correctness-is-all-you-need
+:END:
+
+
+
+* COMMENT Local Variables                                           :ARCHIVE:
+# Local Variables:
+# eval: (org-hugo-auto-export-mode)
+# End:

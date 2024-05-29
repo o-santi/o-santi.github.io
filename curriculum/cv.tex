@@ -1,0 +1,186 @@
+\documentclass[twocolumn,a4paper,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip}
+\usepackage[english]{babel}
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+\titlespacing{\subsection}{0pt}{3pt}{3pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+\title{Leonardo Santiago}
+\author{\href{https://github.com/o-santi}{\raisebox{-0.05\height}\faGithub\ Github} \ $|$
+\href{https://www.linkedin.com/in/leonardo-ribeiro-santiago}{\raisebox{-0.05\height}\faLinkedin\ Linkedin} \ $|$ \
+\href{https://o-santi.gitub.io}{\raisebox{-0.05\height}\faGlobe \ Blog} \ $|$ \ 
+\href{mailto:leonardo.ribeiro.santiago@gmail.com}{\raisebox{-0.05\height} \faEnvelope \ Email}}
+
+\date{}
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+\twocolumn
+\maketitle
+
+% non-numbered pages
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+% \begin{tabularx}{\linewidth}{ @{}X X@{} }
+% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
+% \raisebox{-0.05\height}\faGithub\ username \ | \
+% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
+% \end{tabularx}
+
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+
+%Interests/ Keywords/ Summary
+
+
+Hello, I'm Leonardo, a strong and opinionated software engineer based in Brazil, focused on correctness, reliability and reproducibility. I daily drive NixOS and master a myriad of tools, including rust, nix, python, postgresql, emacs (and lisps!), being very quick to learn new languages and paradigms. My interests are in formal proof assistants, compilers, language design, linux systems and low level programming. 
+
+If you need a sharp thinker able to quickly identify flaws and inefficiencies in your processes and develop robust fixes, while always valuing correctness, then look no further. I'm willing to hear you out.
+
+%Experience
+\section{Work Experience}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+  \textbf{Software Engineer} & Mixrank \\ 
+  Jun 2023 - present & \faMapMarker* \ Remote \\
+  \\
+  \multicolumn{2}{@{}X@{}}{
+    At Mixrank I create value through removing complexity and improving reliability of our systems in a fast paced environment, constantly looking for inneficiencies and inconsistencies. I've implemented key features in our rust build system in pure nix, improved reliability of our plethora of systems in NixOS and removed the need for a lot of legacy processes by leveraging nix's power, while keeping every server running 24/7. Also dealt with PostgreSQL and Python implementing shiny new features for our changing needs.
+  }   
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+  \textbf{Software Engineer} & Kindelia \\
+  Mar 2022 - May 2023 & \faMapMarker* \ Remote \\
+  \\
+  \multicolumn{2}{@{}X@{}}{
+    At Kindelia I worked thoroughly with an avant garde open-source functional runtime, implemented entirely in Rust. I identified logical problems in the implementation, audited code of a prototype of a blockchain, and developed libraries to Kind, the internal dependently typed proof language. I also pioneered and successfully delivered an MVP of a transpiler of other languages' (mainly python and javascript) source code to our runtime.
+  }
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+  \textbf{Junior Developer} & Editora Epapers \\
+  \hfill Aug 2020 - Mar 2023 & \faMapMarker* Rio de Janeiro, Brazil \\
+  \\
+  \multicolumn{2}{@{}X@{}}{
+    As a junior in a small book publisher, I mainly helped automatizing away a lot of repetitive needs using python, both in XML and in Latex documents. They reduced the time to check each document in about 80\% and greatly increased other workers' productivity. Even after leaving, most of my scripts are used until this day.
+  }
+\end{tabularx}
+
+%Projects
+\section{Projects}
+
+\subsection*{\href{https://o-santi.github.com}{\textbf{lowestcase}}}
+  I maintain a small lower case onlu blog to talk about topics that usually habit my mind for a little too long, ranging from parser implementations for relations between proofs and programs. It went through a few iterations, and in one of those I implemented my \href{https://github.com/o-santi/sssg}{open source own static site generator tool} (almost entirely in OCaml), but nowadays I've settled on a much simpler emacs + hugo setup.
+
+\subsection*{\href{https://github.com/o-santi/nixos}{\textbf{My NixOS config}}}
+I maintain the configuration of my own systems as a public and open source repository, as a way to instruct new users on how to set it up. Everything from secrets management, window manager configuration and even my emacs configuration is all declaratively written in a way that lets me share most of the code between my two work machines.
+
+\subsection*{\href{https://github.com/o-santi/emacs}{\textbf{My Emacs config}}}
+In fact, my own emacs configuration itself is a nixos module, that can be imported into any system directly, with no hassle. It is all done in a single \href{https://orgmode.org/}{org file}, which is then parsed by my modified \href{https://github.com/o-santi/from-elisp}{lisp parser}, which then finally generates the correct derivation to be built in NixOS. Surprisingly, this works very well, and I'm able to quickly add and remove packages whenever I want, without any problems.
+
+\subsection*{\href{https://github.com/o-santi/nesp}{\textbf{nesP}}}
+A small NES emulator written entirely in Common Lisp. It is able to run super mario at a staggering 8 FPS, albeit with a ton of bugs. I had a ton of fun writing it, and seeing it render a real game was very rewarding. It probably the reason why I use emacs till this day, and why I got so interested in systems programming in the first place.
+
+\subsection*{Open source contributions}
+I've done a fair bit of open source contributions, with probably my main one being implementing missing capabilities in feature resolution in the amazing \href{https://github.com/o-santi/nocargo}{nocargo} nix build tool. I'm very proud of this contribution, because it re-enabled nocargo to build almost all rust written software. I still use it in all my local rust projects to this day without any problems.
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\begin{tabularx}{\linewidth}{ @{}l X@{} }	
+
+  2020 - 2025 & Bachelor's Degree in Computer Science @ Federal University of Rio de Janeiro (UFRJ) (GPA: 3.6/4.0). \\
+  & Scientific research in type theory, compilers and computation theory.
+
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+  \textbf{Portuguese} & Native \\
+  \textbf{English} & Fluent (Cambridge FCE) \\
+  \textbf{Japanese} & Advanced (JLPT N2) \\
+  \textbf{Spanish} & Conversational \\
+  \\
+  \textbf{Tools} & Git, Linux, Latex, XML, Org files, excel, and more.
+\end{tabularx}
+
+\vfill
+\center{\footnotesize Last updated: \today}
+
+\end{document}

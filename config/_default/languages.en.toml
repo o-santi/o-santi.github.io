@@ -1,0 +1,28 @@
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "lowest case"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+  # logo = "static/shin.png"
+  # secondaryLogo = "img/secondary-logo.png"
+  # description = "My awesome website"
+  # copyright = "Copy, _right?_ :thinking_face:"
+
+[author]
+  name = "leonardo santiago"
+#  image = "img/blowfish_logo.png"
+#   headline = "I'm only human"
+#   bio = "A little bit about you"
+  links = [
+    { email = "mailto:leonardo.ribeiro.santiago@gmail.com" },
+    { github = "https://github.com/o-santi" },
+    { gitlab = "https://gitlab.com/o-santi" },
+    { linkedin = "https://www.linkedin.com/in/leonardo-ribeiro-santiago/" },
+    { telegram = "https://t.me/osanti4" },
+    { twitter = "https://twitter.com/o-santi" },
+   ]
