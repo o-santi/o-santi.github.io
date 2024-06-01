@@ -1,3 +1,2 @@
-User-agent: *
-Disallow: /
+User-Agent: *
 Sitemap: http://localhost:1313/sitemap.xml

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>rust is not about memory safety | lowestcase</title>
+<meta name="title" content="rust is not about memory safety" />
+<meta name="description" content="most of rust discussions nowadays revolve about memory safety, and how it is safer than C / C&#43;&#43; / zig / go / whatever language is being trashed on twitter that day. while yes, that is true - not that the bar for most of these is particularly high - what I think is the main point of the language is always glossed over: correctness. when one tries to criticize any of the aforementioned languages, one is answered with the following argument:" />
+<meta name="keywords" content="rust,correctness," />
+
+
+<meta property="og:url" content="http://localhost:1313/rust-is-not-about-memory-safety/">
+  <meta property="og:site_name" content="lowestcase">
+  <meta property="og:title" content="rust is not about memory safety">
+  <meta property="og:description" content="most of rust discussions nowadays revolve about memory safety, and how it is safer than C / C&#43;&#43; / zig / go / whatever language is being trashed on twitter that day. while yes, that is true - not that the bar for most of these is particularly high - what I think is the main point of the language is always glossed over: correctness. when one tries to criticize any of the aforementioned languages, one is answered with the following argument:">
+  <meta property="og:locale" content="en-US">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2024-06-01T15:21:30-03:00">
+    <meta property="article:modified_time" content="2024-06-01T15:21:30-03:00">
+    <meta property="article:tag" content="Rust">
+    <meta property="article:tag" content="Correctness">
+
+
+
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="rust is not about memory safety">
+<meta name="twitter:description" content="most of rust discussions nowadays revolve about memory safety, and how it is safer than C / C&#43;&#43; / zig / go / whatever language is being trashed on twitter that day. while yes, that is true - not that the bar for most of these is particularly high - what I think is the main point of the language is always glossed over: correctness. when one tries to criticize any of the aforementioned languages, one is answered with the following argument:">
+
+
+
+
+  <meta itemprop="name" content="rust is not about memory safety">
+  <meta itemprop="description" content="most of rust discussions nowadays revolve about memory safety, and how it is safer than C / C&#43;&#43; / zig / go / whatever language is being trashed on twitter that day. while yes, that is true - not that the bar for most of these is particularly high - what I think is the main point of the language is always glossed over: correctness. when one tries to criticize any of the aforementioned languages, one is answered with the following argument:">
+  <meta itemprop="datePublished" content="2024-06-01T15:21:30-03:00">
+  <meta itemprop="dateModified" content="2024-06-01T15:21:30-03:00">
+  <meta itemprop="wordCount" content="2453">
+  <meta itemprop="keywords" content="Rust,Correctness">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+<style>
+  a {
+      color:#fa8c16;
+      text-decoration: none;
+  }
+  a:hover {
+      color:#d46b08;
+      text-decoration: dotted underline;
+  }
+  ul.blog-posts li a:visited {
+      color:#ffc069;
+  }
+  code {
+      color: black;
+      background-color: #ffc069; 
+  }
+</style>
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>lowestcase</h2>
+</a>
+<nav><a href="/">home</a>
+
+<a href="/about/">about</a>
+
+
+<a href="/blog">blog</a>
+
+</nav>
+</header>
+  <main>
+
+<h1>rust is not about memory safety</h1>
+<p>
+  <i>
+    <time datetime='2024-06-01' pubdate>
+      01-06-2024
+    </time>
+  </i>
+</p>
+
+<content>
+  <p>most of rust discussions nowadays revolve about memory safety, and how it is safer than C / C++ / zig / go / whatever language is being trashed on twitter that day. while yes, that is true - not that the bar for most of these is particularly high - what I think is the main point of the language is always glossed over: correctness. when one tries to criticize any of the aforementioned languages, one is answered with the following argument:</p>
+<blockquote>
+<p>your program segfaults? skill issue</p>
+</blockquote>
+<p>but i&rsquo;d like to make the counter-argument that, no, this has nothing to do with skill issue.</p>
+<h2 id="formal-language-theory">formal language theory</h2>
+<p>the first thing one learns when they&rsquo;re studying formal languages (the field that studies grammars, state automata, etc) is that the rules that describe a certain grammar must match <strong>exactly</strong> the ones that you want to include in your language. this means that there&rsquo;s a bidirectional relationship between the grammar you describe (which directly define the automata that parses that language) and the words<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> that it parses (which are related to the semantics of the program, how it executes).</p>
+<p>from it, it can be inferred that the grammar <strong>must not</strong> allow in the language any words that does not have defined semantics, and in the opposite direction, that the language should not specify semantics to any program that cannot be parsed by the rules of the grammar. both of these are required in order to make study of this grammar &lt;-&gt; language partnership fun, pleasing, and most importantly sound.</p>
+<p>going beyond, formal language theory also gives you the knowledge that the execution of any program can be given as a set of grammar rules in an abstract machine (the most famous one being a turing machine). in the same way you can define a set of grammar rules to parse parenthesized arithmetic expressions using a stack automaton, you can define a set of grammar rules to model the execution of a C program, and, albeit super complex, can be modeled as a turing machine. this usually gets the name of C abstract machine, and is the basis for formal specification of behavior in the language.</p>
+<p>and no, i&rsquo;m not talking about modeling a C parser as a state machine (which probably is easier than most languages, if you ignore pre-processor stuff). i&rsquo;m talking about modeling C <strong>execution</strong> as a language being parsed. drawing a parallel, when parsing parenthesized expressions, you pop things in and out of the stack to represent &ldquo;balancedness&rdquo;, and in the same way, when &ldquo;parsecuting&rdquo; C code, you must write to memory, represent side effects, represent type casts and pointer conversions and everything <strong>as part of the language</strong>.</p>
+<p>in the same way that you&rsquo;d hope that a parenthesized arithmetic expression parser would recognize that <code>(1 + 2) + 3)</code> is an invalid expression, you&rsquo;d expect that the C compiler would correctly verify that the following series of tokens is not a <em>well behaved</em> program:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">foo</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> myptr) {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">*</span>myptr <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">foo</span>(NULL);
+</span></span></code></pre></div><p>i say <em>well behaved</em> because i can&rsquo;t say <em>invalid</em>. it is in fact defined by the spec that when you dereference a <code>NULL</code> pointer the result is <a href="http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html"><em>undefined behavior</em></a>. and this is C&rsquo;s achilles heel: instead of outright banning programs like the one above (which i&rsquo;d argue is the correct approach), it will happily compile and give you garbage output.</p>
+<p>framing it this way really exposes the fragility of C, because undefined behavior has to always be taken into account. and, by the nature of it, there is no way to represent it other than as a black box, such that, if your code ever encounters it, then literally all you can say is that <strong>the whole result of the program</strong> is undefined - that is, it can be anything. you cannot show properties, nor say what will happen once your program enters this state, as the C specification literally does not define it. it may come to a halt, write garbage to the screen or completely delete half of the files of your program, and there&rsquo;s no way to predict what will come out of it, by definition. in the lucky case, it will segfault while executing and you&rsquo;ll be extremely pissed off, but that is not at all guaranteed. this is akin to having a float expression with some deep term being <code>NaN</code>, in that it eventually must evaluate to <code>NaN</code> and you can&rsquo;t draw any conclusions about the result of the expression (other that it isn&rsquo;t a number).</p>
+<p>language designers are by no means dumb, and yes, they know much, much more than me about these problems. undefined behavior exists exactly because there must be parts of your code that your compiler <strong>must</strong> assume that aren&rsquo;t possible, so that it can correctly compile. for example, let&rsquo;s say that you inadvertently try to dereference a pointer that you have no knowledge about. the C compiler simply does not have enough information to know if it is <code>NULL</code>, if it is still pointing to valid memory, or if the memory has been initialized, so what it&rsquo;s approach is simply emit code <strong>as if</strong> it was a valid, initialized, non-null pointer.</p>
+<p>it is essential to realize that this is an <strong>assumption</strong>, and in almost most cases, it simply does not care whether or not it actually was actually still valid, so writing to it may have a myriad of effects of different effects (none of which are the compiler&rsquo;s concerns). sometimes, your system might correctly intercept a read/write from invalid/null memory and raise you a signal, but that is not guaranteed.</p>
+<p>and there are a huge number of tools to aid in finding undefined behavior, it&rsquo;s just that 1. they are not by any means standards of C development (not in spec and not in standard compilers) and 2 they are fallible and will always let some undefined programs slip by.</p>
+<h2 id="runtime-exceptions-are-not-the-solution">runtime exceptions are not the solution</h2>
+<p>most languages try to handle this by introducing some sort of runtime exception system, which i think is a terrible idea. while this is much, much safer than what C does, it still makes reasoning about the code extremely hard by completely obliterating locality of reason. your indexing operation may still be out of bounds, and while this now has defined outcomes, it is one of the possible outcomes of your program (whether you like it or not), and you must handle it. and, of course, no one handles all of them, for it is humanely impossible to do it in most languages because:</p>
+<ol>
+<li>it is hard to know when an operation can raise an exception, and under which conditions.</li>
+<li>even if documented, it is never enforced that all exceptions must be gracefully handled, so some random function in a dependency of a dependency may raise an error from an unexpected corner case and you must deal with it.</li>
+</ol>
+<p>this is a symptom of virtually all modern languages, and none of them have any good answers to it. java mandates that you report in your function type signature the errors that it may raise (which is a rare java W), but it does let you write code with <a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/runtime.html">unchecked exceptions</a> that won&rsquo;t signal a compile error if ignored, which eventually will crash your minecraft game. python, ruby, php and most other languages (even <a href="https://www.tweag.io/blog/2020-04-16-exceptions-in-haskell/">haskell</a> made this mistake) do not even attempt to signal when a function might raise an exception. javascript somehow manages to be even worse, by having horrible implicit-by-default type casts, having undefined AND null, using strings as UTF-16, using floats as standard numbers, implicitly inserting semicolons, and honestly the list could go on forever.</p>
+<p>the root of all these problems is, quite literally, the same: that your compiler (or interpreter) lets into your program execution states that you didn&rsquo;t anticipate for. one of the best of examples of the opposite, surprisingly enough, is regex matchers. while i concede that their syntax can be extremely confusing, they have the best property of software: if they compile, they work exactly as intended - which i henceforth will call <strong>correctness</strong>. this is because regular languages&rsquo; properties and their state automata have been studied to extreme depths, and it is entirely possible to write a regex implementation that is <strong>correct</strong> (in the same way as above), going as far as providing formal verifications of that <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p>from this definition of <strong>correctness</strong> we can also derive a semantically useful definition for the word bug: an unexpected outcome for the program, that shouldn&rsquo;t be allowed in the language. of course java behavior might be defined for all inputs (for the most part, i&rsquo;m sure there are might be problems here and there) but just because one possible outcome of program is <code>NullPointerException</code> doesn&rsquo;t mean that it is <strong>expected</strong>, making it, by my definition, a bug.</p>
+<h2 id="make-invalid-states-unrepresentable">make invalid states unrepresentable</h2>
+<p>what the regex example makes clear is that the key to correctness is to make your language tight enough to have defined and <strong>desired</strong> output for all possible inputs. this is not to say that it won&rsquo;t raise errors; much to the contrary, it must have parser errors saying that some strings aren&rsquo;t valid regexes. instead, it means that all errors are <strong>predictable</strong>, and <strong>well defined</strong> (in some sense).</p>
+<p>you, as the programmer, is then in charge of ensuring that the resulting regex program actually solves the problem you have at hands. want to match 3 words of 2 digit numbers followed by a capital letter? great, they can do that. want to match balanced parenthesized expressions? sadly, regex is incapable of ever solving that, because that language <a href="https://en.wikipedia.org/wiki/Pumping_lemma_for_regular_languages#Use_of_the_lemma_to_prove_non-regularity">is not regular</a>, so no matter how hard you try it will never solve it.</p>
+<p>in a way, there&rsquo;s a beauty in how C sidesteps this: it defines one of the possible program outputs as being <em>undefined</em>, and it is on the programmers behalf to tightly ensure that the program has 0 paths to <em>undefined behavior</em>. in fact, it is probably one of the most <a href="https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf">well specified languages</a>, which is what makes it suitable for writing formally verifiable programs <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+<p>the main strength of rust, and where it differs from all mainstream languages, is that it has a very clear focus on program <strong>correctness</strong>. the raison d&rsquo;être of the borrow checker is statically assuring that all references are pointing to valid memory, such that it is literally impossible for any borrow be null or to point to some freed memory (modulus <a href="https://github.com/Speykious/cve-rs">implementation errors of course</a>). this completely rules out this possibility of bugs from the language we&rsquo;re trying to &ldquo;parse&rdquo;. remember the C excerpt from above, where i said that the compiler should rule out the program as invalid? well, it is literally impossible to write that sort of program in rust, because one cannot construct a <code>NULL</code> reference.</p>
+<p>not only that, but rust languages features makes it so, so much easier to write <strong>correct</strong> software: sum types (tagged unions), <code>Option</code> instead of <code>NULL</code> (which in and of itself is amazing), <code>Result</code> for errors (making obligatory to handle all possible branches your program can take), a strong and powerful static type system, and ditching inheritance and classes in favor of traits.</p>
+<p>note that i never ever talked about memory safety. even in a world where C wasn&rsquo;t in fact full of memory vulnerabilities, rust would still be miles better, because it statically assures you that the <strong>meaning of your program is tightly reproduced by the code you&rsquo;ve written</strong>. it is, by design, more correct than C, and the only way a problem can possibly happen is by side stepping rust static checks by using <code>unsafe</code>.</p>
+<p>it is just a happy coincidence that this leads to a language that isn&rsquo;t garbage collected, that is relatively lean, fast, easy to embed, has good ergonomics and that enables you to write asynchronous and multi-threaded programs. these properties are awesome to boost rust to a very well regarded status between developers, but aren&rsquo;t at all related to languages that enable you to build reliable, correct software. out of curiosity, i&rsquo;d happily defend the case that <a href="https://coq.inria.fr/">coq</a> is also one of these languages, and it absolutely does not hold any of these any of those.</p>
+<h2 id="software-engineering-as-a-craft">software engineering as a craft</h2>
+<p>finally, i think this relates to how i personally model the software development job as a whole. it starts by having some problem you think you can use computers to solve, and then follow 3 clearly stratified steps:</p>
+<ol>
+<li>define how one might solve the problem. this usually means splitting it into several possible cases and treating each and every one of them separately.</li>
+<li>define an abstract machine that executes the very same steps, <strong>and making sure that it tightly adheres to your plan</strong></li>
+<li>implement the very same machine in a language, <strong>making sure that your implementation adheres tightly to your abstract machine</strong></li>
+</ol>
+<p>the part that programmers usually get paid millions of dollars for is the step <strong>1 -&gt; 2</strong>, which is by far the hardest and that requires the most creativity and craftsmanship. what usually makes people say that <a href="https://www.youtube.com/watch?v=FeAMiBKi_EM">software is in decline</a> is that we don&rsquo;t learn the value of executing step <strong>3</strong> properly. this leads to sloppy, half baked software that crashes when X Y Z happens, and we&rsquo;ve just come to terms with software being so brittle.</p>
+<p>it is not by chance that Yang et al. could only find measly 9 bugs after 6 CPU years of fuzzing in <a href="https://compcert.org/man/manual001.html">compcert</a>, a formally verified c compiler (written in coq), where as in gcc and clang, they <a href="https://users.cs.utah.edu/~regehr/papers/pldi11-preprint.pdf#subsection.3.2">found and reported more than 300</a>. all these 9 bugs where in the unverified front end of the compiler (the parser), and there were literally 0 middle end (compiler passes and AST translations) bugs found, which is unheard of. this is not by chance, they&rsquo;ve spent many years writing proofs that all of their passes are correct, safe, and preserve the meaning of the original program.</p>
+<p>i really think software developers should strive for that kind of resilience, which i believe can only be achieved through properly valuing <strong>correctness</strong> . i don&rsquo;t think it is reasonable to expect that all software be built using coq and proving every little bit of it (due to business constraints) but i think that rust is a good enough language to start taking things more seriously.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>formally they are defined as a sequence of tokens in certain alphabet that the automata closures over. normally we think of &ldquo;words&rdquo; as the whole program that we&rsquo;re parsing.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>the excellent software foundations book <a href="https://softwarefoundations.cis.upenn.edu/lf-current/IndProp.html">explains thoroughly</a> how one might formally write one possible regex matcher, and prove that the implementation is correct&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>through the use of external tools like Coq&rsquo;s <a href="https://vst.cs.princeton.edu/veric/">verifiable C series</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+</content>
+<p>
+  
+  <a href="http://localhost:1313/blog/rust/">#Rust</a>
+  
+  <a href="http://localhost:1313/blog/correctness/">#Correctness</a>
+  
+</p>
+
+  </main>
+  <footer>leonardo santiago | <a href="https://github.com/o-santi" title="github"><svg width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"></path></svg></a> <a href="mailto:leonardo.ribeiro.santiago@gmail.com" title="email"> <svg width="16px" height="16px" viewBox="0 0 1920 1920" fill="#fa8c16"><path d="M0 1694.235h1920V226H0v1468.235ZM112.941 376.664V338.94H1807.06v37.723L960 1111.233l-847.059-734.57ZM1807.06 526.198v950.513l-351.134-438.89-88.32 70.475 378.353 472.998H174.042l378.353-472.998-88.32-70.475-351.134 438.89V526.198L960 1260.768l847.059-734.57Z" fill-rule="evenodd"></path></svg></a>
+</footer>
+
+    
+</body>
+
+</html>

@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
   <url>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2024-06-01T15:21:30-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/correctness/</loc>
+    <lastmod>2024-06-01T15:21:30-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/rust/</loc>
+    <lastmod>2024-06-01T15:21:30-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/rust-is-not-about-memory-safety/</loc>
+    <lastmod>2024-06-01T15:21:30-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/about/</loc>
+    <lastmod>2024-06-01T12:12:47-03:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2024-05-01T11:53:23-03:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2024-06-01T10:31:58-03:00</lastmod>
   </url>
 </urlset>
