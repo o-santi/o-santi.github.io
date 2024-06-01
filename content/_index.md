@@ -2,7 +2,7 @@
 title = "home"
 author = ["santi"]
 description = "a lower case only blog, purely for aesthetics"
-lastmod = 2024-06-01T18:59:08-03:00
+lastmod = 2024-06-01T19:24:40-03:00
 draft = false
 +++
 

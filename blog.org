@@ -37,6 +37,7 @@ this blog was built using emacs' excelent org-mode and [[https://github.com/gohu
 :EXPORT_HUGO_SECTION: /blog
 :END:
 ** rust is not about memory safety                        :rust:correctness:
+SCHEDULED: <2024-06-01 dom>
 :PROPERTIES:
 :EXPORT_FILE_NAME: rust-is-not-about-memory-safety
 :END:

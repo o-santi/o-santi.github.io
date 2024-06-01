@@ -2,7 +2,8 @@
 title = "rust is not about memory safety"
 author = ["santi"]
 description = "a lower case only blog, purely for aesthetics"
-lastmod = 2024-06-01T18:59:08-03:00
+publishDate = 2024-06-01T00:00:00-03:00
+lastmod = 2024-06-01T19:26:17-03:00
 tags = ["rust", "correctness"]
 draft = false
 +++
