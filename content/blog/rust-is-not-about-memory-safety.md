@@ -2,7 +2,7 @@
 title = "rust is not about memory safety"
 author = ["santi"]
 description = "a lower case only blog, purely for aesthetics"
-lastmod = 2024-06-01T17:29:17-03:00
+lastmod = 2024-06-01T18:59:08-03:00
 tags = ["rust", "correctness"]
 draft = false
 +++
@@ -91,4 +91,4 @@ i really think software developers should strive for that kind of resilience, wh
 
 [^fn:1]: formally they are defined as a sequence of tokens in certain alphabet that the automata closures over. normally we think of "words" as the whole program that we're parsing.
 [^fn:2]: the excellent software foundations book [explains thoroughly](https://softwarefoundations.cis.upenn.edu/lf-current/IndProp.html) how one might formally write one possible regex matcher, and prove that the implementation is correct
-[^fn:3]: through the use of external tools like Coq's [verifiable C series](https://vst.cs.princeton.edu/veric/)
+[^fn:3]: through the use of external tools like coq's [verifiable C series](https://vst.cs.princeton.edu/veric/)
