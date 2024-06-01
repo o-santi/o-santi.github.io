@@ -42,7 +42,7 @@ SCHEDULED: <2024-06-01 dom>
 :EXPORT_FILE_NAME: rust-is-not-about-memory-safety
 :END:
 
-most of rust discussions nowadays revolve about memory safety, and how it is safer than C / C++ / zig / go / whatever language is being trashed on twitter that day. while yes, that is true - not that the bar for most of these is particularly high - what I think is the main point of the language is always glossed over: correctness. when one tries to criticize any of the aforementioned languages, one is answered with the following argument:
+most of rust discussions nowadays revolve around memory safety, and how it is safer than C / C++ / zig / go / whatever language is being trashed on twitter that day. while yes, that is true - not that the bar for most of these is particularly high - what I think is the main point of the language is always glossed over: correctness. when one tries to criticize any of the aforementioned languages, one is answered with the following argument:
 #+begin_quote 
 your program segfaults? skill issue
 #+end_quote
@@ -69,11 +69,13 @@ i say /well behaved/ because i can't say /invalid/. it is in fact defined by the
 
 framing it this way really exposes the fragility of C, because undefined behavior has to always be taken into account. and, by the nature of it, there is no way to represent it other than as a black box, such that, if your code ever encounters it, then literally all you can say is that *the whole result of the program* is undefined - that is, it can be anything. you cannot show properties, nor say what will happen once your program enters this state, as the C specification literally does not define it. it may come to a halt, write garbage to the screen or completely delete half of the files of your program, and there's no way to predict what will come out of it, by definition. in the lucky case, it will segfault while executing and you'll be extremely pissed off, but that is not at all guaranteed. this is akin to having a float expression with some deep term being ~NaN~, in that it eventually must evaluate to ~NaN~ and you can't draw any conclusions about the result of the expression (other that it isn't a number).
 
-language designers and compiler developers are by no means dumb, and yes, they know much, much more than me about these problems. undefined behavior exists exactly because there must be parts of your code that your compiler *must* assume that aren't possible, so that it can correctly compile. for example, let's say that you inadvertently try to dereference a pointer that you have no knowledge about. the C compiler simply does not have enough information to know if it is ~NULL~, if it is still pointing to valid memory, or if the memory has been initialized, so what it's approach is simply emit code *as if* it was a valid, initialized, non-null pointer.
+language designers and compiler developers are by no means dumb, and yes, they know much, much more than me about these problems. undefined behavior exists exactly because there must be parts of your code that your compiler *must* assume that aren't possible, so that it can correctly compile. for example, let's say that you inadvertently try to dereference a pointer that you have no knowledge about. the C compiler simply does not have enough information to know if it is ~NULL~, if it is still pointing to valid memory, or if the memory has been initialized, so it's approach is to simply emit code *as if* it was a valid, initialized, non-null pointer.
 
-it is essential to realize that this is an *assumption*, and in almost most cases, it simply does not care whether or not it actually was actually still valid, so writing to it may have a myriad of effects of different effects (none of which are the compiler's concerns). sometimes, your system might correctly intercept a read/write from invalid/null memory and raise you a signal, but that is not guaranteed.
+it is essential to realize that this is an *assumption*, and in almost most cases, it does not care whether or not it actually was actually still valid, so writing to it may have a myriad of effects of different effects (none of which are the compiler's concerns). sometimes, your system might correctly intercept a read/write from invalid/null memory and raise you a signal, but that is not guaranteed.
 
-and there are a huge number of tools to aid in finding undefined behavior, it's just that 1. they are not by any means standards of C development (not in spec and not in standard compilers) and 2 they are fallible and will always let some undefined programs slip by.
+and there are a huge number of tools to aid in finding undefined behavior in a code base, it's just that
+1. they are not by any means standards of C development (not in spec and not in standard compilers) and
+2. they are fallible and will always let some undefined programs slip by.
 
 *** runtime exceptions are not the solution
 
