@@ -30,7 +30,7 @@ if you feel like smugly responding to any of my posts (or just want to kindly se
 - [[https://www.linkedin.com/in/leonardo-ribeiro-santiago/][linkedin]]
 - [[https://github.com/o-santi][github]]
 
-this blog was built using emacs' excelent org-mode and [[https://github.com/gohugoio/hugo][hugo]] (with the [[https://github.com/janraasch/hugo-bearblog][bearblog theme]]), and it's source code is openly available [[https://github.com/o-santi/blog][here]].
+this blog was built using emacs' excelent org-mode and [[https://github.com/gohugoio/hugo][hugo]] (with the [[https://github.com/janraasch/hugo-bearblog][bearblog theme]]), and it's source code is openly available [[https://github.com/o-santi/o-santi.github.io][here]].
 
 * blog
 :PROPERTIES:

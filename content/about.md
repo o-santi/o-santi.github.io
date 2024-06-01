@@ -2,7 +2,7 @@
 title = "about"
 author = ["santi"]
 description = "a lower case only blog, purely for aesthetics"
-lastmod = 2024-06-01T18:59:08-03:00
+lastmod = 2024-06-01T19:13:52-03:00
 draft = false
 menu = "main"
 +++
@@ -17,4 +17,4 @@ if you feel like smugly responding to any of my posts (or just want to kindly se
 -   [linkedin](https://www.linkedin.com/in/leonardo-ribeiro-santiago/)
 -   [github](https://github.com/o-santi)
 
-this blog was built using emacs' excelent org-mode and [hugo](https://github.com/gohugoio/hugo) (with the [bearblog theme](https://github.com/janraasch/hugo-bearblog)), and it's source code is openly available [here](https://github.com/o-santi/blog).
+this blog was built using emacs' excelent org-mode and [hugo](https://github.com/gohugoio/hugo) (with the [bearblog theme](https://github.com/janraasch/hugo-bearblog)), and it's source code is openly available [here](https://github.com/o-santi/o-santi.github.io).

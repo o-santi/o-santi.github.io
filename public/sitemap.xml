@@ -2,22 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/about/</loc>
-    <lastmod>2024-06-01T17:29:17-03:00</lastmod>
+    <loc>https://o-santi.github.com/about/</loc>
+    <lastmod>2024-06-01T18:59:08-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/</loc>
-    <lastmod>2024-06-01T17:29:17-03:00</lastmod>
+    <loc>https://o-santi.github.com/blog/</loc>
+    <lastmod>2024-06-01T18:59:08-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/correctness/</loc>
-    <lastmod>2024-06-01T17:29:17-03:00</lastmod>
+    <loc>https://o-santi.github.com/tags/correctness/</loc>
+    <lastmod>2024-06-01T18:59:08-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-06-01T17:29:17-03:00</lastmod>
+    <loc>https://o-santi.github.com/</loc>
+    <lastmod>2024-06-01T18:59:08-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/rust/</loc>
-    <lastmod>2024-06-01T17:29:17-03:00</lastmod>
+    <loc>https://o-santi.github.com/tags/rust/</loc>
+    <lastmod>2024-06-01T18:59:08-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/rust-is-not-about-memory-safety/</loc>
-    <lastmod>2024-06-01T17:29:17-03:00</lastmod>
+    <loc>https://o-santi.github.com/blog/rust-is-not-about-memory-safety/</loc>
+    <lastmod>2024-06-01T18:59:08-03:00</lastmod>
   </url>
 </urlset>
