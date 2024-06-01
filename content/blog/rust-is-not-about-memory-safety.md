@@ -1,7 +1,8 @@
 +++
 title = "rust is not about memory safety"
 author = ["santi"]
-lastmod = 2024-06-01T15:21:30-03:00
+description = "a lower case only blog, purely for aesthetics"
+lastmod = 2024-06-01T17:29:17-03:00
 tags = ["rust", "correctness"]
 draft = false
 +++
@@ -36,7 +37,7 @@ i say _well behaved_ because i can't say _invalid_. it is in fact defined by the
 
 framing it this way really exposes the fragility of C, because undefined behavior has to always be taken into account. and, by the nature of it, there is no way to represent it other than as a black box, such that, if your code ever encounters it, then literally all you can say is that **the whole result of the program** is undefined - that is, it can be anything. you cannot show properties, nor say what will happen once your program enters this state, as the C specification literally does not define it. it may come to a halt, write garbage to the screen or completely delete half of the files of your program, and there's no way to predict what will come out of it, by definition. in the lucky case, it will segfault while executing and you'll be extremely pissed off, but that is not at all guaranteed. this is akin to having a float expression with some deep term being `NaN`, in that it eventually must evaluate to `NaN` and you can't draw any conclusions about the result of the expression (other that it isn't a number).
 
-language designers are by no means dumb, and yes, they know much, much more than me about these problems. undefined behavior exists exactly because there must be parts of your code that your compiler **must** assume that aren't possible, so that it can correctly compile. for example, let's say that you inadvertently try to dereference a pointer that you have no knowledge about. the C compiler simply does not have enough information to know if it is `NULL`, if it is still pointing to valid memory, or if the memory has been initialized, so what it's approach is simply emit code **as if** it was a valid, initialized, non-null pointer.
+language designers and compiler developers are by no means dumb, and yes, they know much, much more than me about these problems. undefined behavior exists exactly because there must be parts of your code that your compiler **must** assume that aren't possible, so that it can correctly compile. for example, let's say that you inadvertently try to dereference a pointer that you have no knowledge about. the C compiler simply does not have enough information to know if it is `NULL`, if it is still pointing to valid memory, or if the memory has been initialized, so what it's approach is simply emit code **as if** it was a valid, initialized, non-null pointer.
 
 it is essential to realize that this is an **assumption**, and in almost most cases, it simply does not care whether or not it actually was actually still valid, so writing to it may have a myriad of effects of different effects (none of which are the compiler's concerns). sometimes, your system might correctly intercept a read/write from invalid/null memory and raise you a signal, but that is not guaranteed.
 

@@ -1,7 +1,8 @@
 +++
 title = "about"
 author = ["santi"]
-lastmod = 2024-06-01T12:12:47-03:00
+description = "a lower case only blog, purely for aesthetics"
+lastmod = 2024-06-01T17:29:17-03:00
 draft = false
 menu = "main"
 +++
