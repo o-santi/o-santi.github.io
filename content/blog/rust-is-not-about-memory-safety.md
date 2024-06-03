@@ -3,7 +3,7 @@ title = "rust is not about memory safety"
 author = ["santi"]
 description = "a lower case only blog, purely for aesthetics"
 publishDate = 2024-06-01T00:00:00-03:00
-lastmod = 2024-06-02T08:50:45-03:00
+lastmod = 2024-06-03T12:50:10-03:00
 tags = ["rust", "correctness"]
 draft = false
 +++
@@ -21,7 +21,7 @@ the first thing one learns when they're studying formal languages (the field tha
 
 from it, it can be inferred that the grammar **must not** allow in the language any words that does not have defined semantics, and in the opposite direction, that the language should not specify semantics to any program that cannot be parsed by the rules of the grammar. both of these are required in order to make study of this grammar &lt;-&gt; language partnership fun, pleasing, and most importantly sound.
 
-going beyond, formal language theory also gives you the knowledge that the execution of any program can be given as a set of grammar rules in an abstract machine (the most famous one being a turing machine). in the same way you can define a set of grammar rules to parse parenthesized arithmetic expressions using a stack automaton, you can define a set of grammar rules to model the execution of a C program, and, albeit super complex, can be modeled as a turing machine. this usually gets the name of C abstract machine, and is the basis for formal specification of behavior in the language.
+going beyond, formal language theory also gives you the knowledge that the execution of any program can be given as a set of grammar rules in an abstract machine (the most famous one being a turing machine). in the same way you can define a set of grammar rules to parse parenthesized arithmetic expressions using a stack automaton, you can define a set of grammar rules to model the execution of a C program, that, albeit super complex, can be modeled as a turing machine. this usually gets the name of C abstract machine, and is the basis for formal specification of behavior in the language.
 
 and no, i'm not talking about modeling a C parser as a state machine (which probably is easier than most languages, if you ignore pre-processor stuff). i'm talking about modeling C **execution** as a language being parsed. drawing a parallel, when parsing parenthesized expressions, you pop things in and out of the stack to represent "balancedness", and in the same way, when "parsecuting" C code, you must write to memory, represent side effects, represent type casts and pointer conversions and everything **as part of the language**.
 
@@ -40,7 +40,7 @@ framing it this way really exposes the fragility of C, because undefined behavio
 
 language designers and compiler developers are by no means dumb, and yes, they know much, much more than me about these problems. undefined behavior exists exactly because there must be parts of your code that your compiler **must** assume that aren't possible, so that it can correctly compile. for example, let's say that you inadvertently try to dereference a pointer that you have no knowledge about. the C compiler simply does not have enough information to know if it is `NULL`, if it is still pointing to valid memory, or if the memory has been initialized, so it's approach is to simply emit code **as if** it was a valid, initialized, non-null pointer.
 
-it is essential to realize that this is an **assumption**, and in almost most cases, the compiler does not care whether or not it actually was actually still valid, so writing to it may have a myriad of effects of different effects (none of which are the compiler's concerns). sometimes, your system might correctly intercept a read/write from invalid/null memory and raise you a signal, but that is not guaranteed.
+it is essential to realize that this is an **assumption**, and in almost most cases, the compiler does not care whether or not it was actually still valid, so writing to it may have a myriad of effects of different effects (none of which are the compiler's concerns). sometimes, your system might correctly intercept a read/write from invalid/null memory and raise you a signal, but that is not guaranteed.
 
 and there are a huge number of tools to aid in finding undefined behavior in a code base, it's just that
 
