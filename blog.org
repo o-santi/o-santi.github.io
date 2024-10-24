@@ -26,7 +26,6 @@ i'm leonardo santiago, a software engineer based in brazil. my interests are in 
 currently, i work as a software engineer @ [[https://mixrank.com][Mixrank]], and you can find my curriculum [[./static/cv.pdf][here]].
 
 if you feel like smugly responding to any of my posts (or just want to kindly send me a message), these are my socials:
-- [[mailto:leonardo.ribeiro.santiago@gmail.com][email]]
 - [[https://www.linkedin.com/in/leonardo-ribeiro-santiago/][linkedin]]
 - [[https://github.com/o-santi][github]]
 
@@ -119,6 +118,8 @@ it is not by chance that Yang et al. could only find measly 9 bugs after 6 CPU y
 
 i really think software developers should strive for that kind of resilience, which i believe can only be achieved through properly valuing *correctness* . i don't think it is reasonable to expect that all software be built using coq and proving every little bit of it (due to business constraints) but i think that rust is a good enough language to start taking things more seriously.
 ** exploiting thunks for fun and profit
+
+
 * COMMENT Local Variables                                           :ARCHIVE:
 # Local Variables:
 # eval: (org-hugo-auto-export-mode)
